@@ -1,0 +1,106 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 3rem;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  main {
+    margin: 2rem;
+  }
+  
+  section {
+    border: 1px solid #333;
+    padding: 1rem;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+  body {
+	margin: 0;
+	padding: 0;
+}
+
+.parallax {
+	height: 100vh;
+	background-image: url('everest.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	overflow: hidden;
+}
+
+.mountains {
+	background-image: url('everest.jpg');
+	height: 3000px;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	top: 2000px;
+	transform: translate3d(0, 0, 0);
+	z-index: -1;
+	animation: parallax 10s linear infinite;
+    position: fixed;
+}
+
+@keyframes parallax {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(0, -1000px, 0);
+	}
+}
+  .page{
+    position: relative;
+  z-index: 1;
+  }
+  h1{
+    display: flex;
+  justify-content: center;
+  font-size: 70px;
+
+  }
+  nav{display: flex;
+    justify-content: center;}
+ .text{
+    font-family: Montserrat;
+    color: #2f2f32;
+ }
+ .navi:hover{
+cursor: pointer;
+font-size: 120%;
+font-weight: bold;
+transition: font-size 0.3s ease-in-out;
+ }

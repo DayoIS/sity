@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <title>Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('dungeon.jpg');
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin: 0px;
+        }
+
+        .container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px auto 0;
+        }
+
+        .tab {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .tab:nth-child(1) {
+            top: 0;
+            left: 0;
+        }
+
+        .tab:nth-child(2) {
+            top: 0;
+            left: 0;
+        }
+
+        .tab:nth-child(3) {
+            top: 0;
+            left: 0;
+        }
+
+        .completion-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        #score {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        header {
+          opacity: 1;
+          transition: opacity 2s ease-in-out; 
+        }
+        
+        .header-hidden {
+          opacity: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Квест у Лісі</h1>
+        <div id="score">0</div>
+    </header>
+    <div class="container">
+        <div id="map"></div>
+        <img class="tab" src="mush.png" style="left: 20%; top: 30%;" onclick="collectIcon(this)">
+        <img class="tab" src="mush.png" style="left: 50%; top: 60%;" onclick="collectIcon(this)">
+        <img class="tab" src="mush.png" style="left: 80%; top: 40%;" onclick="collectIcon(this)">
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const header = document.querySelector("header");
+        
+        setTimeout(function() {
+          header.classList.add("header-hidden");
+        }, 2000);
+      });
+      
+        let foundIcons = 0;
+
+        function collectIcon(icon) {
+            icon.style.display = "none";
+            foundIcons++;
+            updateScore();
+
+            if (foundIcons === 3) {
+                showCompletionMessage();
+            }
+        }
+
+        function updateScore() {
+            const scoreElement = document.getElementById("score");
+            scoreElement.textContent = foundIcons.toString();
+        }
+
+        function showCompletionMessage() {
+            const completionMessage = document.createElement("div");
+            completionMessage.classList.add("completion-message");
+            completionMessage.innerText = "Ви знайшли всі гриби!";
+        
+            const previousMessage = document.querySelector(".completion-message");
+            if (previousMessage) {
+                previousMessage.innerText += " Дякую!";
+            }
+        
+            document.body.appendChild(completionMessage);
+        
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 3000);
+        }
+        
+        function getRandomValue(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector(".container");
+            const icons = document.querySelectorAll(".tab");
+        
+            for (let i = 0; i < icons.length; i++) {
+                const containerRect = container.getBoundingClientRect();
+                const iconRect = icons[i].getBoundingClientRect();
+        
+                const containerWidth = containerRect.width;
+                const containerHeight = containerRect.height;
+                const iconWidth = iconRect.width;
+                const iconHeight = iconRect.height;
+        
+                const randomTop = getRandomValue(0, containerHeight - iconHeight);
+                const randomLeft = getRandomValue(0, containerWidth - iconWidth);
+        
+                icons[i].style.position = "absolute";
+                icons[i].style.top = randomTop + "px";
+                icons[i].style.left = randomLeft + "px";
+            }
+        });
+    </script>
+</body>
+</html>
+

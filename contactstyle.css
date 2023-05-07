@@ -1,0 +1,43 @@
+.contact-info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-info h3 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .contact-info p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 3rem;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+  }
+  nav{
+    display: flex;
+    justify-content: center;}
+ 
+ .navi:hover{
+cursor: pointer;
+font-size: 120%;
+font-weight: bold;
+transition: font-size 0.3s ease-in-out;
+ }
